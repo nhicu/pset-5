@@ -26,7 +26,8 @@ window.onload = function() {
  */
 
 const sayHello = function() {
-    // write your exercise 1 code here
+    let imput = "";
+    let imput = prompt()
 };
 
 /*
