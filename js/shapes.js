@@ -39,12 +39,28 @@ const sayHello = function() {
     }
 };
 
-/*
- * Exercise 2.
- */
-
 const drawRectangle = function() {
-    // write your exercise 2 code here
+    let width = prompt("Width: ");
+    let height = prompt("Height: ");
+    let x = prompt("X: ");
+    let y = prompt("Y: ");
+    let canvas2 = document.getElementById('student-canvas-2');
+    let ctx2 = canvas2.getContext('2d');
+    let ctx2.clearRect(0, 0, 1024, 512);
+    if(width < 1 || width >1024){
+      alert("Your width must be between 1 and 1024.")
+    }if(height < 1 || height > 512){
+      alert("Your height must be between 1 and 512.")
+    }if(x < 1 || x > 1024){
+      alert("Your x-coordinate must be between 1 and 1024.")
+    }if(y < 1 || y > 512){
+      alert("Your y-coordinate must be between 1 and 512.")
+    }if(isNaN(width) || isNaN(height) || isNaN(x) || isNaN(y)) {
+        alert("One of your values is not a number.")
+    }else{
+      validInput = true;
+    }
+
 };
 
 /*
