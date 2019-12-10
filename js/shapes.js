@@ -19,6 +19,8 @@ window.onload = function() {
     // equivalent set of six event listeners for your solutions. the first one is done for you.
 
     document.getElementById("hello").onclick = sayHello;
+    document.getElementById("rectangle").onclick = drawRectangle;
+    document.getElementById("colored-rectangle").onclick = drawColoredRectangle;
 }
 
 /*
@@ -37,6 +39,10 @@ const sayHello = function() {
     ctx.font = '48px sans-serif';
     ctx.strokeText(message, 30, 70, 994);
 };
+
+/*
+ * Exercise 2.
+ */
 
 const drawRectangle = function() {
     let width = prompt("Width: ");
@@ -67,13 +73,17 @@ const drawRectangle = function() {
  */
 
 const drawColoredRectangle = function() {
-    let color = prompt("Message: ");
+    var color = prompt("Color: ");
     const canvas = document.getElementById('student-canvas-3');
     const ctx = canvas.getContext('2d');
-    while (color !== Black || color!== black || color!== Blue || color!== blue || color!== Green || color!== green || color!== Orange || color!== orange || color!== Purple || color!== purple || color!== Red || color !== red || color!== Yellow || color!== yellow){
-        ctx.fillStyle = color;
-        ctx.fillRect(10, 10, 100, 50);
-
+    if (color == "Black" || color== "black" || color== "Blue" || color== "blue" || color== "Green" || color== "green" || color== "Orange" || color== "orange" || color== "Purple" || color== "purple" || color== "Red" || color == "red" || color== "Yellow" || color== "yellow") {
+        ctx.fillStyle = color;}
+    else{
+      alert(color + " is not a supported color.")
+    }
+          ctx.fillRect(10, 10, 100, 50);
+          ctx.rect(100,100,50,50);
+          ctx.stroke();
 };
 
 /*
