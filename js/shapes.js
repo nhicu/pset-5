@@ -67,7 +67,13 @@ const drawRectangle = function() {
  */
 
 const drawColoredRectangle = function() {
-    // write your exercise 3 code here
+    let color = prompt("Message: ");
+    const canvas = document.getElementById('student-canvas-3');
+    const ctx = canvas.getContext('2d');
+    while (color !== Black || color!== black || color!== Blue || color!== blue || color!== Green || color!== green || color!== Orange || color!== orange || color!== Purple || color!== purple || color!== Red || color !== red || color!== Yellow || color!== yellow){
+        ctx.fillStyle = color;
+        ctx.fillRect(10, 10, 100, 50);
+
 };
 
 /*
