@@ -45,18 +45,20 @@ const sayHello = function() {
  */
 
 const drawRectangle = function() {
+  let canvas = document.getElementById('student-canvas-2');
+  let ctx = canvas.getContext('2d');
+   ctx.clearRect(0, 0, 1024, 512);
+  ctx.clearRect(0, 0, 1024, 512);
     let width = 0;
     let height = 0;
     let x = 0;
     let y = 0;
-    let canvas = document.getElementById('student-canvas-2');
-    let ctx = canvas.getContext('2d');
-     ctx.clearRect(0, 0, 1024, 512);
+
 do{
-  let width = prompt("Width: ")
-  let height = prompt("Height: ")
-  let x = prompt("X: ")
-  let y = prompt("Y: ")
+  width = prompt("Width: ")
+  height = prompt("Height: ")
+  x = prompt("X: ")
+  y = prompt("Y: ")
   if (width == null || height == null || x == null || y == null) {
     break;
   }
@@ -73,9 +75,12 @@ do{
     }if(width + x > 1024 || height + y > 512){
         alert("Your rectangle won't fit on the canvas.")
     }else{
-      while (width > 1024 || width < 1 || height > 512 || height < 1 || x < 1 || x > 1024 || y < 1 || y > 512 || isNaN(width) || isNaN(height) || isNaN(x) || isNaN(y) || Number(width) + Number(x) > 1024 || Number(height) + Number(y) > 512)
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+      while (width > 1024 && width < 1 && height > 512 && height < 1 && x < 1 && x > 1024 && y < 1 && y > 512 && isNaN(width) && isNaN(height) && isNaN(x) && isNaN(y))
+
+
   ctx.strokeRect(x, y, width, height);
+}
+}
 }
 };
 
