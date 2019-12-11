@@ -45,13 +45,21 @@ const sayHello = function() {
  */
 
 const drawRectangle = function() {
-    let width = prompt("Width: ");
-    let height = prompt("Height: ");
-    let x = prompt("X: ");
-    let y = prompt("Y: ");
+    let width = 0;
+    let height = 0;
+    let x = 0;
+    let y = 0;
     let canvas = document.getElementById('student-canvas-2');
     let ctx = canvas.getContext('2d');
      ctx.clearRect(0, 0, 1024, 512);
+do{
+  let width = prompt("Width: ")
+  let height = prompt("Height: ")
+  let x = prompt("X: ")
+  let y = prompt("Y: ")
+  if (width == null || height == null || x == null || y == null) {
+    break;
+  }
     if(width < 1 || width >1024){
       alert("Your width must be between 1 and 1024.")
     }if(height < 1 || height > 512){
@@ -60,12 +68,15 @@ const drawRectangle = function() {
       alert("Your x-coordinate is invalid.")
     }if(y < 1 || y > 512){
       alert("Your y-coordinate is invalid.")
-    }if(isNaN(width) || isNaN(height) || isNaN(x) || isNaN(y)) {
+    }if(Number.isNaN(width) ||Number.isNaN(height) || Number.isNaN(x) || Number.isNaN(y)) {
         alert("One of your values is not a number.")
-    }if(x + width > 1024 || y + height > 512){
-        alert("Your rectangle is out of the counds of the canvas.")
-    }
-
+    }if(width + x > 1024 || height + y > 512){
+        alert("Your rectangle won't fit on the canvas.")
+    }else{
+      while (width > 1024 || width < 1 || height > 512 || height < 1 || x < 1 || x > 1024 || y < 1 || y > 512 || isNaN(width) || isNaN(height) || isNaN(x) || isNaN(y) || Number(width) + Number(x) > 1024 || Number(height) + Number(y) > 512)
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.strokeRect(x, y, width, height);
+}
 };
 
 /*
@@ -77,13 +88,13 @@ const drawColoredRectangle = function() {
     const canvas = document.getElementById('student-canvas-3');
     const ctx = canvas.getContext('2d');
     if (color == "Black" || color== "black" || color== "Blue" || color== "blue" || color== "Green" || color== "green" || color== "Orange" || color== "orange" || color== "Purple" || color== "purple" || color== "Red" || color == "red" || color== "Yellow" || color== "yellow") {
-        ctx.fillStyle = color;}
+        ctx.fillStyle = color;
+        ctx.fillRect(10, 10, 100, 50);
+        }
     else{
       alert(color + " is not a supported color.")
     }
-          ctx.fillRect(10, 10, 100, 50);
-          ctx.rect(100,100,50,50);
-          ctx.stroke();
+
 };
 
 /*
