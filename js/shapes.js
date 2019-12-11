@@ -48,7 +48,6 @@ const drawRectangle = function() {
   let canvas = document.getElementById('student-canvas-2');
   let ctx = canvas.getContext('2d');
    ctx.clearRect(0, 0, 1024, 512);
-  ctx.clearRect(0, 0, 1024, 512);
     let width = 0;
     let height = 0;
     let x = 0;
@@ -62,22 +61,20 @@ do{
   if (width == null || height == null || x == null || y == null) {
     break;
   }
-    if(width < 1 || width >1024){
+    if( isNaN(width) || width < 1 || width >1024){
       alert("Your width must be between 1 and 1024.")
-    }if(height < 1 || height > 512){
+    }if(isNaN(height)|| height < 1 || height > 512){
       alert("Your height must be between 1 and 512.")
-    }if(x < 1 || x > 1024){
+    }if(isNaN(x) || x < 1 || x > 1024){
       alert("Your x-coordinate is invalid.")
-    }if(y < 1 || y > 512){
+    }if(isNaN(y) || y < 1 || y > 512){
       alert("Your y-coordinate is invalid.")
     }if(Number.isNaN(width) ||Number.isNaN(height) || Number.isNaN(x) || Number.isNaN(y)) {
         alert("One of your values is not a number.")
     }if(width + x > 1024 || height + y > 512){
         alert("Your rectangle won't fit on the canvas.")
-    }else{
-      while (width > 1024 && width < 1 && height > 512 && height < 1 && x < 1 && x > 1024 && y < 1 && y > 512 && isNaN(width) && isNaN(height) && isNaN(x) && isNaN(y))
-
-
+    }
+      while (width > 1024 && width < 1 && height > 512 && height < 1 && x < 1 && x > 1024 && y < 1 && y > 512 && isNaN(width) && isNaN(height) && isNaN(x) && isNaN(y)){
   ctx.strokeRect(x, y, width, height);
 }
 }
