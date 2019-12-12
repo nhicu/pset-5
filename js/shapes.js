@@ -168,29 +168,30 @@ const drawFace = function() {
     alert("Your radius must be at least 32.");
   }if (face > (512 / 2)) {
     alert("Your smiley face won't fit on canvas.");
-  }face = prompt("Radius: ");
+  }
+  face = prompt("Radius: ");
 }face = Number(face);
 let eyes = Number(face * 0.15);
 let mouth = Number(face * 0.7);
 
-context.beginPath();
-context.arc(512, 256, face, 0, 2 * Math.PI);
-context.closePath();
-context.stroke();
+ctx.beginPath();
+ctx.arc(512, 256, face, 0, 2 * Math.PI);
+ctx.closePath();
+ctx.stroke();
 
-context.beginPath();
-context.arc(512, 256, mouth, 0, Math.PI);
-context.stroke();
+ctx.beginPath();
+ctx.arc(512, 256, mouth, 0, Math.PI);
+ctx.stroke();
 
-context.beginPath();
-context.arc((face * 0.4) + 512, 256 - (face * 0.4), eyes, 0, 2 * Math.PI);
-context.closePath();
-context.stroke();
+ctx.beginPath();
+ctx.arc((face * 0.4) + 512, 256 - (face * 0.4), eyes, 0, 2 * Math.PI);
+ctx.closePath();
+ctx.stroke();
 
-context.beginPath();
-context.arc(512 - (face * 0.4), 256 - (face * 0.4), eyes, 0, 2 * Math.PI);
-context.closePath();
-context.stroke();
+ctx.beginPath();
+ctx.arc(512 - (face * 0.4), 256 - (face * 0.4), eyes, 0, 2 * Math.PI);
+ctx.closePath();
+ctx.stroke();
 
 };
 
