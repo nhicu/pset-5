@@ -21,6 +21,8 @@ window.onload = function() {
     document.getElementById("hello").onclick = sayHello;
     document.getElementById("rectangle").onclick = drawRectangle;
     document.getElementById("colored-rectangle").onclick = drawColoredRectangle;
+    document.getElementById("triangle").onclick = drawTriangle;
+    document.getElementById("smile").onclick = drawFace;
 }
 
 /*
@@ -52,16 +54,14 @@ const drawRectangle = function() {
     let height = 0;
     let x = 0;
     let y = 0;
-
-while{
-  width = prompt("Width: ")
-  height = prompt("Height: ")
-  x = prompt("X: ")
-  y = prompt("Y: ")
+    width = prompt("Width: ");
+    height = prompt("Height: ");
+    x = prompt("X: ");
+    y = prompt("Y: ");
+while(isNaN(width) || width < 1 || width >1024 || isNaN(height)|| height < 1 || height > 512 || isNaN(x) || x < 1 || x > 1024 || isNaN(y) || y < 1 || y > 512 || Number.isNaN(width) ||Number.isNaN(height) || Number.isNaN(x) || Number.isNaN(y) || width + x > 1024 || height + y > 512){
   if (width == null || height == null || x == null || y == null) {
     break;
-  }
-    if( isNaN(width) || width < 1 || width >1024){
+    }if( isNaN(width) || width < 1 || width >1024){
       alert("Your width must be between 1 and 1024.")
     }if(isNaN(height)|| height < 1 || height > 512){
       alert("Your height must be between 1 and 512.")
@@ -69,15 +69,18 @@ while{
       alert("Your x-coordinate is invalid.")
     }if(isNaN(y) || y < 1 || y > 512){
       alert("Your y-coordinate is invalid.")
-    }if(Number.isNaN(width) ||Number.isNaN(height) || Number.isNaN(x) || Number.isNaN(y)) {
+    }if(Number.isNaN(width) ||Number.isNaN(height) || Number.isNaN(x) || Number.isNaN(y)){
         alert("One of your values is not a number.")
     }if(width + x > 1024 || height + y > 512){
         alert("Your rectangle won't fit on the canvas.")
     }if(width > 1024 && width < 1 && height > 512 && height < 1 && x < 1 && x > 1024 && y < 1 && y > 512 && isNaN(width) && isNaN(height) && isNaN(x) && isNaN(y)){
+    }
+    width = prompt("Width: ");
+    height = prompt("Height: ");
+    x = prompt("X: ");
+    y = prompt("Y: ");
+}
   ctx.strokeRect(x, y, width, height);
-}
-}
-}
 };
 
 /*
@@ -103,36 +106,37 @@ const drawColoredRectangle = function() {
  */
 
 const drawTriangle = function() {
-    let short = Number(prompt("Side 1: "));
-    let other = Number(prompt("Side 2: "));
-    let long = Number(prompt("Side 3: "));
-    let hypot = Math.max(short, other, long)
-    let height = Math.min (sbort, other, long)
-    let base = Math.sqrt(hypot*hypot - height*height)
-    let canvas = document.getElementById('student-canvas-4');
-    let ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  while (((height*height) != (hypotenuse*hypotenuse) - (base*base)) || height > 512 || height < 1 || base > 1024 || base < 1 || hypotenuse < 1 || isNaN(side1) || isNaN(side2) || isNaN(side3)) {
+  const canvas = document.getElementById('student-canvas-4');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, 1024, 512);
 
-    if (side1 == 0 && side2 == 0 && side3 == 0) {
-      break;
-    }
+    var short = Number(prompt("Side 1: "));
+    var other = Number(prompt("Side 2: "));
+    var long = Number(prompt("Side 3: "));
 
-    if (isNaN(side1) || isNaN(side2) || isNaN(side3)) {
-      alert("One of your sides is not a number.");
-    } else if (base > 1024 || height > 512 || hypotenuse > 1144) {
-      alert("Your triangle won't fit on the canvas.");
-    } else if ((hypotenuse*hypotenuse) != (height*height) + (base*base) || base == 0 || height == 0 || hypotenuse == 0  || side1 + side2 + side3 - hypotenuse - height != base) {
-      alert("That's not a valid right triangle.");
-    }
+  while ( isNaN(short) || short > 1024 || short < 1 || isNaN(other) ||  other > 1024 || other< 1 || isNaN(long) || long > 1024 || long< 1){
 
-    side1 = Number(prompt("Side 1: "));
-    side2 = Number(prompt("Side 2: "));
-    side3 = Number(prompt("Side 3: "));
-
+      if (short == null || other == null || long == null) {
+        ctx.clearRect(0, 0, 1024, 512);
+        return;
+      }if (isNaN(short) || isNaN(other) || isNaN(long)){
+        alert("One of your sides is not a number.")
+      } else {
+        alert("One of your sides is invalid.")
+      }
+    short = prompt("Side 1: ");
+    other = prompt("Side 2: ");
+    long = prompt("Side 3: ");
   }
 
-  if (((height*height) == (hypotenuse*hypotenuse) - (base*base)) && base <= 1024 && height <= 512 && hypotenuse <= 1144 && height > 0 && base > 0 && hypotenuse > 0) {
+      var hypot = Math.max(short, other, long)
+      var height = Math.min (short, other, long)
+      var base = Math.sqrt(hypot*hypot - height*height)
+
+
+  if ( base > 1024 || height > 512 || hypot > 1144 ){
+    alert("Your triangle won't fit on the canvas")
+  }if (((height*height) == (hypot*hypot) - (base*base)) && base <= 1024 && height <= 512 && hypot <= 1144 && height > 0 && base > 0 && hypot > 0) {
     ctx.beginPath();
     ctx.moveTo(25, 25);
     ctx.lineTo(25, height + 25);
@@ -147,7 +151,47 @@ const drawTriangle = function() {
  */
 
 const drawFace = function() {
-    // write your exercise 4 code here
+  const canvas = document.getElementById('student-canvas-5');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, 1024, 512);
+
+  var face = prompt("Radius: ");
+  while (face < 32 || face > (512 / 2) || isNaN(face)) {
+
+    if (face == null) {
+    break;
+  }if (isNaN(face)) {
+    alert("Your radius is not a number.");
+  }face = Number(face);
+
+  if (face < 32) {
+    alert("Your radius must be at least 32.");
+  }if (face > (512 / 2)) {
+    alert("Your smiley face won't fit on canvas.");
+  }face = prompt("Radius: ");
+}face = Number(face);
+let eyes = Number(face * 0.15);
+let mouth = Number(face * 0.7);
+
+context.beginPath();
+context.arc(512, 256, face, 0, 2 * Math.PI);
+context.closePath();
+context.stroke();
+
+context.beginPath();
+context.arc(512, 256, mouth, 0, Math.PI);
+context.stroke();
+
+context.beginPath();
+context.arc((face * 0.4) + 512, 256 - (face * 0.4), eyes, 0, 2 * Math.PI);
+context.closePath();
+context.stroke();
+
+context.beginPath();
+context.arc(512 - (face * 0.4), 256 - (face * 0.4), eyes, 0, 2 * Math.PI);
+context.closePath();
+context.stroke();
+
 };
 
 /*
