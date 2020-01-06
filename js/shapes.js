@@ -23,6 +23,7 @@ window.onload = function() {
     document.getElementById("colored-rectangle").onclick = drawColoredRectangle;
     document.getElementById("triangle").onclick = drawTriangle;
     document.getElementById("smile").onclick = drawFace;
+    document.getElementById("pyramid").onclick = drawPyramid;
 }
 
 /*
@@ -210,7 +211,38 @@ ctx.stroke();
 /*
  * Exercise 6 (extra credit).
  */
+ const drawPyramid = function() {
+     const canvas = document.getElementById("student-canvas-6");
+     const ctx = canvas.getContext("2d");
+     ctx.clearRect(0, 0, canvas.width, canvas.height);
+     let side;
+     let endLoop = false;
 
-const drawPyramid = function() {
-    // write your exercise 5 code here
-};
+     while (endLoop === false) {
+         side = window.prompt("Side:");
+         if (side === null) {
+             endLoop = true;
+         }else if (Number.isNaN(Number(side))) {
+             window.alert("Your block size is not a number.");
+         }else if (Number(side) < 1) {
+             window.alert("Your block size must be at least 1.");
+         }else if (side > 100) {
+             window.alert("Your pyramid won't fit on the canvas.");
+         }else {
+             endLoop = true;
+         }
+     }
+
+     let startingPoint = 10;
+     let y = canvas.height - 10 - Number(side);
+
+     for (let i = 5; i > 0; i--) {
+         let x = startingPoint;
+         for (let j = i; j > 0; j--) {
+             ctx.strokeRect(x, y, Number(side), Number(side));
+             x += Number(side);
+         }
+         startingPoint += Number(side) / 2;
+         y -= Number(side);
+     }
+ };
